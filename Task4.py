@@ -57,6 +57,8 @@ while k > 0:
 else:
     polnum += str(memb[-1]) + '=0'
 print(f"полученый многочлен:",polnum)
-data = open('file.txt', 'w')
+fl = input('Задайте имя файла для сохранения')
+fl += '.txt'
+data = open(fl, 'w')
 data.writelines(polnum)
 data.close()
