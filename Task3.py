@@ -7,7 +7,7 @@ for i in range(20):
 print(numblist)
 newnumblist = []
 for i in numblist:
-    if numblist.count(i) < 2:
+    if numblist.count(i) == 1:
         newnumblist.append(i)
 print(newnumblist)
         
