@@ -61,8 +61,8 @@ k = InputNum()
 memb = RandList(k+1)
 polnum = CreatPolnum(memb)
 print("полученый многочлен:",polnum)
-# fl = input('Задайте имя файла для сохранения: ')
-# fl += '.txt'
-# data = open(fl, 'w')
-# data.writelines(polnum)
-# data.close()
+fl = input('Задайте имя файла для сохранения: ')
+fl += '.txt'
+data = open(fl, 'w')
+data.writelines(polnum)
+data.close()
