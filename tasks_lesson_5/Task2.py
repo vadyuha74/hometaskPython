@@ -9,7 +9,7 @@ from random import randint
 
 def InputNum(): # проверка ввода числа
     n = input('Введите количество забираемых конфет ')
-    while n.isdecimal() == False or int(n) > 28 or int(n) < 1:
+    while n.isdigit() == False or int(n) > 28 or int(n) < 1:
         n = input('Нужно ввести только число от 1 до 28: ')
     return int(n)
 
@@ -69,7 +69,7 @@ print("На столе лежит 2021 конфета. Играют два иг�
 while True:
     print('1 - Игра вдвоем\n2 - Играть одному\n3 - Выйти из игры\n')
     k = input('Если выбрали, введите номер ')
-    while k.isdecimal() == False or int(k) > 3 or int(k) < 1:
+    while k.isdigit() == False or int(k) > 3 or int(k) < 1:
         k = input('Нужно ввести только число от 1 до 3: ')
     if int(k) == 1:
         GamePlayer2(2021)
