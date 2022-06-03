@@ -1,6 +1,4 @@
-print("*" * 10, " Игра Крестики-нолики для двух игроков ", "*" * 10)
-
-board = list(range(1,10))
+# Создайте программу для игры в "Крестики-нолики".
 
 def draw_board(board):
     print("-" * 13)
@@ -54,6 +52,9 @@ def main(board):
             print("Ничья!")
             break
     draw_board(board)
-main(board)
 
+
+print("*" * 10, " Игра Крестики-нолики для двух игроков ", "*" * 10)
+board = list(range(1,10))
+main(board)
 input("Нажмите Enter для выхода!")

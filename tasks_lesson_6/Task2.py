@@ -15,6 +15,6 @@ def PrimFactos(n):
         else:
             yield i
             n /= i
-
+print('раскладываем чилсо на простые множители')
 n = InCheckDig()
 print(f'{n} = {" * ".join(map(str, PrimFactos(n)))}')
