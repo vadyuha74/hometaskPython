@@ -1,0 +1,35 @@
+import requests
+from tkinter import*
+
+
+data = requests.get('https://www.cbr-xml-daily.ru/daily_json.js').json()
+win=Tk()
+win.title("Котировки валют мажоров от центробанка России")
+win.geometry("+550+300")
+
+aud_name = Label(win, text=data['Valute']['AUD']['Name'], font="Calibre 30")
+aud_name.grid(row=0, column=0)
+aud_dat = Label(win, text=data['Valute']['AUD']['Value'], font="Calibre 30")
+aud_dat.grid(row=0, column=1)
+usd_name = Label(win, text=data['Valute']['USD']['Name'], font="Calibre 30")
+usd_name.grid(row=1, column=0)
+usd_dat = Label(win, text=data['Valute']['USD']['Value'], font="Calibre 30")
+usd_dat.grid(row=1, column=1)
+eur_name = Label(win, text=data['Valute']['EUR']['Name'], font="Calibre 30")
+eur_name.grid(row=2, column=0)
+eur_dat = Label(win, text=data['Valute']['EUR']['Value'], font="Calibre 30")
+eur_dat.grid(row=2, column=1)
+chf_name = Label(win, text=data['Valute']['CHF']['Name'], font="Calibre 30")
+chf_name.grid(row=3, column=0)
+chf_dat = Label(win, text=data['Valute']['CHF']['Value'], font="Calibre 30")
+chf_dat.grid(row=3, column=1)
+cad_name = Label(win, text=data['Valute']['CAD']['Name'], font="Calibre 30")
+cad_name.grid(row=4, column=0)
+cad_dat = Label(win, text=data['Valute']['CAD']['Value'], font="Calibre 30")
+cad_dat.grid(row=4, column=1)
+jpy_name = Label(win, text=data['Valute']['JPY']['Name'], font="Calibre 30")
+jpy_name.grid(row=5, column=0)
+jpy_dat = Label(win, text=data['Valute']['JPY']['Value'], font="Calibre 30")
+jpy_dat.grid(row=5, column=1)
+
+win.mainloop()

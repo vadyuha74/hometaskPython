@@ -1,0 +1,1 @@
+from .Init_data import InitKontakts

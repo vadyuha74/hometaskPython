@@ -27,8 +27,7 @@ def save():
     list1 = list(listbox.get(0, END))
     with open("Kontakts.txt", "w") as file:
         file.writelines("%s\n" % place for place in list1)
-    res = messagebox.askyesno(
-        'Можем сохранить и в exel файле', 'Сохранить в exel файле')
+    res = messagebox.askyesno('Можем сохранить и в csv файле', 'Сохранить csv файле')
     if res:
         with open("Kontakts.csv", mode="w", encoding='utf-8') as file:
             names = ["Имя", "Телефон"]
