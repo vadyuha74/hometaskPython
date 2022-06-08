@@ -5,7 +5,6 @@ import Data
 
 
 def add(name, surname, pos):
-    global list_kont
     if name == "":
         messagebox.showerror('Warning', 'Нет имени')
     elif surname == "":
@@ -16,9 +15,7 @@ def add(name, surname, pos):
         list_kont.append({'имя': name, 'фамилия': surname, 'должность': pos})
         return f'{name} , {surname} , {pos}'
 
-def save():
-    global list_kont
-    list1=list_kont 
+def save(list1):
     f=open('Database/Сотрудники.txt', "w")
     print("\n".join(map(str, list1)), file=f)
     f.close()
@@ -64,7 +61,7 @@ def Menu():
     entry3.grid(row=1, column=2)
 
     scrollbar=Scrollbar(frame1, orient=VERTICAL)
-    listbox=Listbox(frame1, selectmode=SINGLE, yscrollcommand=scrollbar.set,width=50) 
+    listbox=Listbox(frame1, selectmode=SINGLE, yscrollcommand=scrollbar.set,width=70) 
     listbox.grid(row=3, columnspan=3)
     scrollbar.config(command=listbox)
     for i in list_kont:
@@ -74,7 +71,7 @@ def Menu():
     button1.grid(row=5, column=0)
     button2=Button(frame2, text="Удалить",  width=15, height=1, command=lambda : listbox.delete(listbox.curselection()))
     button2.grid(row=5, column=1)
-    button3=Button(frame2, text="Сохранить в файл",  width=15, height=1, command=save)
+    button3=Button(frame2, text="Сохранить в файл",  width=15, height=1, command=lambda:save(list(listbox.get(0, END))))
     button3.grid(row=5, column=2)
 
     win.mainloop()

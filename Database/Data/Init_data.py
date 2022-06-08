@@ -7,6 +7,6 @@ def Init_base():
     print(path)
     if os.path.exists(os.path.join(path, 'Database/Сотрудники.txt')):
         file = open(os.path.join(path, 'Database/Сотрудники.txt'), 'r')
-        list_kont =[currelt_list.rstrip() for currelt_list in file.readlines()]
+        list_kont =[currelt_list.strip('{}\n\r') for currelt_list in file.readlines()]
         file.close()
     return list_kont
