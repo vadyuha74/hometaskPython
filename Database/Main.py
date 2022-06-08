@@ -1,5 +1,3 @@
 import Out
 
-
-def start():
-    Out.Menu()
+Out.Menu()

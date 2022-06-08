@@ -1,26 +1,11 @@
 from tkinter import*
 from tkinter import messagebox
-import os
 import Data 
 
-# list_kont = []
-# def InitKontakts():
-#     global list_kont
-#     path = os.getcwd()
-#     try:
-#         file = open(os.path.join(path, 'Database/Сотрудники.txt'), 'r')
-#         list_kont = file.readlines()
-#         file.close()
-#         print(list_kont)
-#     except OSError:
-#         file = open(os.path.join(path, 'Database/Сотрудники.txt'), 'w')
-#         file.close()
-#     return list_kont
 
 
 def add(name, surname, pos):
     global list_kont
-    print(name, surname, pos)
     if name == "":
         messagebox.showerror('Warning', 'Нет имени')
     elif surname == "":
