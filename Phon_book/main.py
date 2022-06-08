@@ -6,10 +6,7 @@ import csv
 
 def delete():
     select = listbox.curselection()
-    #print(select)
-    #index = select[0]
     listbox.delete(select[0], select[-1])
-
 
 def add():
     name = entry1.get()

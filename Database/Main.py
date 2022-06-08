@@ -1,3 +1,5 @@
-from Controller import start
+import Out
 
-start()
+
+def start():
+    Out.Menu()

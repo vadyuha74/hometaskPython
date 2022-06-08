@@ -1,39 +1,36 @@
 from tkinter import*
-# from log import save
-# from prog import add, delete
 from tkinter import messagebox
 import os
+import Data 
 
-list_kont = []
-def InitKontakts():
+# list_kont = []
+# def InitKontakts():
+#     global list_kont
+#     path = os.getcwd()
+#     try:
+#         file = open(os.path.join(path, 'Database/Сотрудники.txt'), 'r')
+#         list_kont = file.readlines()
+#         file.close()
+#         print(list_kont)
+#     except OSError:
+#         file = open(os.path.join(path, 'Database/Сотрудники.txt'), 'w')
+#         file.close()
+#     return list_kont
+
+
+def add(name, surname, pos):
     global list_kont
-    path = os.getcwd()
-    try:
-        file = open(os.path.join(path, 'Database/Сотрудники.txt'), 'r')
-        list_kont = file.readlines()
-        file.close()
-        print(list_kont)
-    except OSError:
-        file = open(os.path.join(path, 'Database/Сотрудники.txt'), 'w')
-        file.close()
-    return list_kont
-
-
-def delete(select):
-    #select=list_kont.curselection()
-    index=select
-    list_kont[index].delete
-
-def add(name, tel):
-    print(name, tel)
+    print(name, surname, pos)
     if name == "":
         messagebox.showerror('Warning', 'Нет имени')
-    elif tel == "":
-        messagebox.showerror('Warning', 'Не указан телефон')
+    elif surname == "":
+        messagebox.showerror('Warning', 'Не фамилии')
+    elif pos == "":
+        messagebox.showerror('Warning', 'Не указана должность')
     else:
-        list_kont.append(name + ", " + tel)
-        return list_kont
-        
+        list_kont.append({'имя': name, 'фамилия': surname, 'должность': pos})
+        return f'{name} , {surname} , {pos}'
+
 def save():
     global list_kont
     list1=list_kont 
@@ -49,7 +46,7 @@ def save():
 
 def Menu():
     global list_kont
-    list_kont = InitKontakts()
+    list_kont = Data.Init_base()
     win=Tk()
     win.geometry("+550+300")
     win.title("База данных")
@@ -77,20 +74,20 @@ def Menu():
     surname=StringVar()
     entry2=Entry(frame2,textvariable=surname)
     entry2.grid(row=1, column=1)
-    posit_work=StringVar()
-    entry2=Entry(frame2,textvariable=posit_work)
-    entry2.grid(row=1, column=2)
+    pos=StringVar()
+    entry3=Entry(frame2,textvariable=pos)
+    entry3.grid(row=1, column=2)
 
     scrollbar=Scrollbar(frame1, orient=VERTICAL)
-    listbox=Listbox(frame1, selectmode=EXTENDED, yscrollcommand=scrollbar.set,width=50) 
+    listbox=Listbox(frame1, selectmode=SINGLE, yscrollcommand=scrollbar.set,width=50) 
     listbox.grid(row=3, columnspan=3)
     scrollbar.config(command=listbox)
     for i in list_kont:
-        listbox.insert(END, i)
+        listbox.insert(0, i)
     button1=Button(frame2, text="Добавить", width=15, height=1, 
-                command=lambda name = get_entry(entry1), tel = get_entry(entry2): listbox.insert(END, ({name}+", "+{tel})))#map(listbox.insert|(END, i), add(name = get_entry(entry1), tel = get_entry(entry2))))
+                command=lambda : listbox.insert(END, add(get_entry(entry1), get_entry(entry2), get_entry(entry3))))
     button1.grid(row=5, column=0)
-    button2=Button(frame2, text="Удалить",  width=15, height=1, command=lambda : delete(listbox.curselection()))
+    button2=Button(frame2, text="Удалить",  width=15, height=1, command=lambda : listbox.delete(listbox.curselection()))
     button2.grid(row=5, column=1)
     button3=Button(frame2, text="Сохранить в файл",  width=15, height=1, command=save)
     button3.grid(row=5, column=2)

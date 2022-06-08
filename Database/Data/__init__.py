@@ -1,1 +1,1 @@
-from .Init_data import InitKontakts
+from .Init_data import Init_base
