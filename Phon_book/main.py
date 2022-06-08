@@ -6,8 +6,9 @@ import csv
 
 def delete():
     select = listbox.curselection()
-    index = select[0]
-    listbox.delete(index)
+    #print(select)
+    #index = select[0]
+    listbox.delete(select[0], select[-1])
 
 
 def add():
@@ -35,7 +36,6 @@ def save():
             file_writer.writerow(names)
             for kont in list1:
                 names = kont.split(' : ')
-                print(names)
                 file_writer.writerow(names)
 
 

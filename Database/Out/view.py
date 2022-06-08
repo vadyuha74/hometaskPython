@@ -33,6 +33,7 @@ def add(name, tel):
     else:
         list_kont.append(name + ", " + tel)
         return list_kont
+        
 def save():
     global list_kont
     list1=list_kont 
@@ -50,8 +51,8 @@ def Menu():
     global list_kont
     list_kont = InitKontakts()
     win=Tk()
-    win.geometry("500x400+550+300")
-    win.title("Контакты телефонов")
+    win.geometry("+550+300")
+    win.title("База данных")
     def get_entry(entry):
         s = entry.get()
         entry.delete(0, END)
@@ -61,23 +62,27 @@ def Menu():
     frame1.pack()
     frame2.pack()
 
-    label1=Label(frame1, text="Список контактов", font="Calibre 30")
-    label1.grid(row=0, columnspan=2)
-    label2=Label(frame1, text="Имя:", font="Calibre 18")
-    label2.grid(row=1, column=0)
-    label3=Label(frame1, text="Телефон:", font="Calibre 18")
-    label3.grid(row=2, column=0)
+    label1=Label(frame1, text="Список сотрудников", font="Calibre 30")
+    label1.grid(row=0, columnspan=3)
+    label2=Label(frame2, text="Имя", font="Calibre 18")
+    label2.grid(row=0, column=0)
+    label3=Label(frame2, text="Фамилия", font="Calibre 18")
+    label3.grid(row=0, column=1)
+    label4=Label(frame2, text="Должность", font="Calibre 18")
+    label4.grid(row=0, column=2)
 
     name=StringVar()
-    entry1=Entry(frame1,textvariable=name)
-    entry1.grid(row=1, column=1)
+    entry1=Entry(frame2,textvariable=name)
+    entry1.grid(row=1, column=0)
+    surname=StringVar()
+    entry2=Entry(frame2,textvariable=surname)
+    entry2.grid(row=1, column=1)
+    posit_work=StringVar()
+    entry2=Entry(frame2,textvariable=posit_work)
+    entry2.grid(row=1, column=2)
 
-    tel=StringVar()
-    entry2=Entry(frame1,textvariable=tel)
-    entry2.grid(row=2, column=1)
-
-    scrollbar=Scrollbar(frame2, orient=VERTICAL)
-    listbox=Listbox(frame2, selectmode=EXTENDED, yscrollcommand=scrollbar.set,width=40) 
+    scrollbar=Scrollbar(frame1, orient=VERTICAL)
+    listbox=Listbox(frame1, selectmode=EXTENDED, yscrollcommand=scrollbar.set,width=50) 
     listbox.grid(row=3, columnspan=3)
     scrollbar.config(command=listbox)
     for i in list_kont:

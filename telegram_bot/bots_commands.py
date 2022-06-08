@@ -1,14 +1,11 @@
 from telegram import Update
 from telegram.ext import CallbackContext
-from log import log
+from logging import log
 import datetime
 import requests
 EXtext = ''
 startEX = 0
 
-def getVideo(update: Update, context: CallbackContext):
-    path = "C:\\Users\\Gulam\\Videos\\GB\\2022_01_20_GeekbrainsGendir_2_L1-Часть 3.mp4"
-    update.message.reply_video(path)
 
 def get_value(f = False, RUB = 1):
     data = requests.get('https://www.cbr-xml-daily.ru/daily_json.js').json()
@@ -50,8 +47,6 @@ def Calc_Exchange(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(result)
 
 
-
-
 def Exchange(update: Update, context: CallbackContext) -> None:
     log(update, context)
     msg = update.message.text
@@ -63,12 +58,6 @@ def Exchange(update: Update, context: CallbackContext) -> None:
         update.message.reply_text(f'Что то пошло не так попробуйте ввести все числа и символы через пробел!')
 
     update.message.reply_text(result)
-
-
-
-def hello(update: Update, context: CallbackContext) -> None:
-    log(update, context)
-    update.message.reply_text(f'Hello {update.effective_user.first_name}')
 
 
 def hi(update: Update, context: CallbackContext) -> None:
