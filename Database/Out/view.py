@@ -67,12 +67,11 @@ def Menu():
     for i in list_kont:
         listbox.insert(0, i)
     button1=Button(frame2, text="Добавить", width=15, height=1, 
-                command=lambda : listbox.insert(END, add(get_entry(entry1), get_entry(entry2), get_entry(entry3))))
+                command=lambda: listbox.insert(END, add(get_entry(entry1), get_entry(entry2), get_entry(entry3))))
     button1.grid(row=5, column=0)
-    button2=Button(frame2, text="Удалить",  width=15, height=1, command=lambda : listbox.delete(listbox.curselection()))
+    button2=Button(frame2, text="Удалить",  width=15, height=1, command=lambda: listbox.delete(listbox.curselection()))
     button2.grid(row=5, column=1)
-    button3=Button(frame2, text="Сохранить в файл",  width=15, height=1, command=lambda:save(list(listbox.get(0, END))))
+    button3=Button(frame2, text="Сохранить в файл",  width=15, height=1, command=lambda: save(list(listbox.get(0, END))))
     button3.grid(row=5, column=2)
 
     win.mainloop()
-Menu()
